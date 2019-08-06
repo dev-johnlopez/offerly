@@ -1,1 +1,1 @@
-<h1>Offerly</h1>
+<h1>offerly</h1>
