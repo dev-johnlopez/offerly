@@ -1,0 +1,248 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!-- Hero Section -->
+<div class="d-md-flex bg-img-hero" style="background-image: url({{ url_for('static', filename='img/1920x1080/img32.jpg') }});">
+  <div class="container d-md-flex align-items-md-center height-md-100vh position-relative space-top-2 space-bottom-3 space-top-md-3 space-top-lg-2 space-bottom-md-0">
+    <div class="w-lg-65 mb-5">
+      <div class="w-lg-65 w-xl-50 mb-5">
+        <h1 class="display-4 text-white">Get an offer on your <strong class="font-weight-semi-bold">house</strong> within 24 hours</h1>
+      </div>
+
+      <!-- Form -->
+      <form class="js-validate" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-row mb-2">
+          <div class="col-12 col-md-10 mb-2">
+            <div class="js-form-message">
+              <div class="input-group">
+                <input id="autocomplete"
+                    placeholder="Enter your address"
+                    onFocus="geolocate()"
+                    type="text"
+                    class="form-control"/>
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-block btn-success transition-3d-hover">Get your free offer</button>
+                </div>
+                <table id="address" hidden>
+                  <tr>
+                    <td class="label">Street address</td>
+                    <td class="slimField">{{ form.street_number(disabled=True) }}</td>
+                    <td class="wideField" colspan="2">{{ form.route(disabled=True) }}</td>
+                  </tr>
+                  <tr>
+                    <td class="label">City</td>
+                    <td class="wideField" colspan="3">{{ form.locality(disabled=True) }}</td>
+                  </tr>
+                  <tr>
+                    <td class="label">State</td>
+                    <td class="slimField">{{ form.administrative_area_level_1(disabled=True) }}</td>
+                    <td class="label">Zip code</td>
+                    <td class="wideField">{{ form.postal_code(disabled=True) }}</td>
+                  </tr>
+                  <tr>
+                    <td class="label">Country</td>
+                    <td class="wideField" colspan="3">{{ form.country(disabled=True) }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <!-- End Form -->
+    </div>
+  </div>
+</div>
+<!-- End Hero Section -->
+
+<!-- Benefits -->
+<div class="container text-center space-2 space-md-3">
+  <!-- Title -->
+  <div class="w-md-150 text-center mx-auto mb-6">
+    <h2 class="font-weight-medium">Join the <span class="text-primary font-weight-semi-bold">thousands</span> of happy customers selling to Offerly</h2>
+    <p>Offerly will buy your home preventing you from dealing with the typical hassles of selling your home.</p>
+  </div>
+  <div class="text-center mb-6">
+    <span class="u-divider"></span>
+  </div>
+  <!-- End Title -->
+
+  <div class="row">
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-danger rounded-circle mb-5">
+          <span class="far fa-calendar-alt btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">Close on your time</h3>
+        <p class="mb-md-0">Typical home sales require two parties to agree on a close date. At Offerly, we can close whenever it is convenient to you.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-primary rounded-circle mb-5">
+          <span class="fas fa-door-open btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">No Open houses</h3>
+        <p class="mb-md-0">Since Offerly buys your home, you will not have to worry about troupes of people rummaging through your home.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-success rounded-circle mb-5">
+          <span class="fas fa-truck-moving btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">Free Moving Assistance</h3>
+        <p class="mb-md-0">After we close, we will help arrange a moving company at no cost to you!</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-success rounded-circle mb-5">
+          <span class="fas fa-money-bill-wave btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">Competitive Offers Only</h3>
+        <p class="mb-md-0">At Offerly, we will only provide you offers that are competitive with current market rates. Our busines model is
+          focused on high volume with tight margins.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-primary rounded-circle mb-5">
+          <span class="fas fa-tools btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">No Rehabs Required</h3>
+        <p class="mb-md-0">When selling your home on the open market, homeowners will need to invest in rehabing the property. For us, we will buy your property as-is and perform all required rehabing.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-7">
+      <div class="text-center px-lg-3">
+        <span class="btn btn-icon btn-lg btn-soft-danger rounded-circle mb-5">
+          <span class="fas fa-piggy-bank btn-icon__inner fa-2x btn-icon__inner-bottom-minus"></span>
+        </span>
+        <h3 class="h5">Save on Costs</h3>
+        <p class="mb-md-0">The cost to sell your home quickly ramps up leaving you with less money in your pocket. At Offerly, we eliminate the need for you to pay closing costs, seller concessions, and the costs of owning two homes at once.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+      <a class="btn btn-primary col-4" href="{{ url_for('landing.services' )}}">Learn More</a>
+  </div>
+</div>
+<!-- End Benefits -->
+
+<!-- CTA Section -->
+<div class="bg-primary text-white text-center">
+  <div class="container space-1">
+    <span class="h6 d-block d-lg-inline-block font-weight-light mb-lg-0">
+      <span class="font-weight-semi-bold">Offerly</span> – the easiest way to sell your house.
+    </span>
+    <a class="btn btn-sm btn-white transition-3d-hover font-weight-normal ml-3" href="{{ url_for('evaluation.new' ) }}">Get your free offer now</a>
+  </div>
+</div>
+<!-- End CTA Section -->
+
+<!-- How It Works Section -->
+<div class="bg-light">
+  <div class="container space-2 space-md-3">
+    <!-- Title -->
+    <div class="w-md-150 w-lg-50 text-center mx-md-auto mb-9">
+      <h2 class="font-weight-medium">Offerly improves your experience of selling a home with these easy steps:</h2>
+    </div>
+    <!-- End Title -->
+
+    <div class="row align-items-lg-center">
+      <div class="col-lg-6 order-lg-2 mb-7 mb-lg-0">
+        <ul class="list-unstyled">
+          <!-- Info Block -->
+          <li class="u-indicator-steps py-3">
+            <div class="media align-items-center border rounded p-5">
+              <div class="d-flex u-indicator-steps__inner mr-3">
+                <span class="display-4 text-primary font-weight-medium">1.</span>
+              </div>
+              <div class="media-body">
+                <h6>Quickly receive a competitive cash offer on your home</h6>
+                <p class="mb-0">Fill out a short questionnaire so we can learn about what makes your home special.</p>
+              </div>
+            </div>
+          </li>
+          <!-- End Info Block -->
+
+          <!-- Info Block -->
+          <li class="u-indicator-steps py-3">
+            <div class="media align-items-center border rounded p-5">
+              <div class="d-flex u-indicator-steps__inner mr-3">
+                <span class="display-4 text-primary font-weight-medium">2.</span>
+              </div>
+              <div class="media-body">
+                <h6>Complete home assessment</h6>
+                <p class="mb-0">After you fall in love with our offer, you'll be ready for your Home Advisor to to complete an in-person home assessment to review &amp; finalize your offer.</p>
+              </div>
+            </div>
+          </li>
+          <!-- End Info Block -->
+
+          <!-- Info Block -->
+          <li class="u-indicator-steps py-3">
+            <div class="media align-items-center border rounded p-5">
+              <div class="d-flex u-indicator-steps__inner mr-3">
+                <span class="display-4 text-primary font-weight-medium">3.</span>
+              </div>
+              <div class="media-body">
+                <h6>Close and celebrate!</h6>
+                <p class="mb-0">Choose your own closing date so you can be convenienced. We don't believe you should pay for two mortgages, move twice, nor close on our schedule. You let us know what is easiest for you so you can sit back and pop the champagne.</p>
+              </div>
+            </div>
+          </li>
+          <!-- End Info Block -->
+        </ul>
+      </div>
+
+      <div id="SVGhouseAgency" class="col-lg-6 order-lg-1 svg-preloader">
+        <div class="pr-lg-7">
+          <!-- SVG Icon -->
+          <figure class="ie-house-agency">
+            <img class="js-svg-injector" src="{{ url_for('static', filename='svg/illustrations/house-agency.svg') }}" alt="Image Description"
+                 data-parent="#SVGhouseAgency">
+          </figure>
+          <!-- End SVG Icon -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End How It Works Section -->
+
+<!-- CTA Section -->
+<div id="SVGctaSection" class="svg-preloader position-relative gradient-half-primary-v1 text-center z-index-2 overflow-hidden">
+  <div class="container space-2">
+    <h3 class="h2 text-info font-weight-semi-bold mb-3">Ready to sell your home?</h3>
+    <p class="lead text-white mb-5">
+      Get your <span class="font-weight-semi-bold">free offer</span> within 24 hours!
+    </p>
+    <a class="btn btn-white btn-wide transition-3d-hover" href="{{ url_for('evaluation.new') }}">Start here!</a>
+  </div>
+
+  <!-- SVG Component -->
+  <figure class="position-absolute top-0 left-0 w-100 max-width-27 z-index-n1">
+    <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/abstract-shapes-8.svg') }}" alt="Image Description"
+         data-parent="#SVGctaSection">
+  </figure>
+  <!-- End SVG Component -->
+
+  <!-- SVG Component -->
+  <figure class="position-absolute bottom-0 right-0 w-100 max-width-27 z-index-n1">
+    <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/abstract-shapes-5.svg') }}" alt="Image Description"
+         data-parent="#SVGctaSection">
+  </figure>
+  <!-- End SVG Component -->
+</div>
+<!-- End CTA Section -->
+
+
+{% endblock %}

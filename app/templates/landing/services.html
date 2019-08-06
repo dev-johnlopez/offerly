@@ -1,0 +1,130 @@
+{% extends 'layout.html' %}
+{% block page_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/dzsparallaxer/dzsparallaxer.css') }}">
+{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<div class="container space-top-3 space-top-md-5 space-top-lg-4 space-bottom-1 space-bottom-sm-2">
+  <div class="w-lg-75">
+    <h1 class="display-3 font-size-md-down-5 font-weight-bold mb-5">
+      Request a <br />
+      <span class="text-warning">
+        <strong class="u-text-animation u-text-animation--typing"></strong>
+      </span>
+      <br />
+      offer for your home.
+    </h1>
+    <p class="lead font-weight-normal">As well as being game-changers when it comes to theme innovation, HS has some of the bestselling themes in its locker.</p>
+  </div>
+</div>
+<!-- End Hero Section -->
+
+<!-- Mockup Block -->
+<div class="bg-light">
+  <div class="container space-2">
+    <!-- Title -->
+    <div class="w-md-150 w-lg-50 text-center mx-md-auto mb-9">
+      <h2 class="font-weight-medium">Sell your home the simple way</h2>
+    </div>
+    <!-- End Title -->
+    <div class="row align-items-lg-center">
+      <div class="col-lg-5 mb-7 mb-lg-0">
+        <!-- Title -->
+        <div class="pr-lg-4">
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">01.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">Request your Offer</h2>
+          <p class="mb-0">Sophisticated model providing analysis for the entire blockchain asset ecosystem. Strategic insights based on research, trends,and 50+ unique indicators to properly evaluate investment potential and risk.</p>
+          <br />
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">02.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">Our "Best Offer" Methodology</h2>
+          <p class="mb-0">We analyze mountains of data to validate the value of your home. Simply put: We know the value of home by comparing your home to comparable sales. We use this data to provide you an offer that is consistent with market conditions.</p>
+        </div>
+        <!-- End Title -->
+      </div>
+
+      <div id="SVGmarketingStrategy" class="col-lg-7 svg-preloader">
+        <!-- SVG Icon -->
+        <figure class="ie-marketing-strategy">
+          <img class="js-svg-injector" src="{{ url_for('static', filename='svg/illustrations/marketing-strategy.svg') }}" alt="Image Description"
+               data-parent="#SVGmarketingStrategy">
+        </figure>
+        <!-- End SVG Icon -->
+      </div>
+    </div>
+  </div>
+  <!-- End Mockup Block -->
+
+  <!-- Mockup Block -->
+  <div class="container space-2">
+    <div class="row align-items-lg-center">
+      <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+        <!-- Title -->
+        <div class="pr-lg-4">
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">03.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">Receive your offer</h2>
+          <p class="mb-0">Prepare your inbox! Our offer will be in your hands within 24 hours. One of our Home Adivsors will reach out and walk you through the offer and show you how to <b>increase the value of your home.</b> We understand that you want top dollar for your home so we are happy to show you how to achieve your financial goals.</p>
+          <br />
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">04.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">Understanding your Offer</h2>
+          <p class="mb-0">Remeber: Our offer cuts out the middlemen so you can put more money in your pocket. This means we will pay your closing costs, we will waive any seller concessions, and you won't need to pay any pesky realtor commissions. Learn more about our offers <a href="{{ url_for('landing.pricing') }}">here.</a></p>
+        </div>
+        <!-- End Title -->
+      </div>
+
+      <div id="SVGbusinessAnalysis" class="col-lg-7 svg-preloader">
+        <!-- SVG Icon -->
+        <figure class="ie-business-analysis">
+          <img class="js-svg-injector" src="{{ url_for('static', filename='svg/illustrations/business-analysis.svg') }}" alt="SVG Illustration"
+               data-parent="#SVGbusinessAnalysis">
+        </figure>
+        <!-- End SVG Icon -->
+      </div>
+    </div>
+  </div>
+  <!-- End Mockup Block -->
+
+  <!-- Mockup Block -->
+  <div class="container space-2">
+    <div class="row align-items-lg-center">
+      <div class="col-lg-5 mb-7 mb-lg-0">
+        <!-- Title -->
+        <div class="pr-lg-4">
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">05.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">In-Home Assessment</h2>
+          <p class="mb-0">Your Home Advisor will meet you at your home and confirm the value of your home. As part of this process, we assess how much repairs are needed to bring your home up to market-ready conditions.</p>
+          <p>Do you want to do your own repairs? If so, great! This is how you will get top dollar for your home! Otherwise, we can handle all necessary repairs.</p>
+        </div>
+        <div class="pr-lg-4">
+          <span class="btn btn-icon btn-soft-primary rounded-circle mb-3">
+            <span class="small font-weight-semi-bold btn-icon__inner">06.</span>
+          </span>
+          <h2 class="h4 font-weight-semi-bold text-primary">Sit Back, Relax, and Cash the Check</h2>
+          <p class="mb-0">Are you excited to close? We are too! To make it even better, we will handle all of the admin &amp; paperwork letting you relax. No more worrying about all of the legal paperwork, we have you covered. We'll make sure you don't have to lift a finger!</p>
+        </div>
+        <!-- End Title -->
+      </div>
+      <div id="SVGappDevelopment" class="col-lg-7 order-lg-1 svg-preloader">
+        <!-- SVG Icon -->
+        <figure class="ie-app-development">
+          <img class="js-svg-injector" src="{{ url_for('static', filename='svg/illustrations/app-development.svg') }}" alt="SVG Illustration"
+               data-parent="#SVGappDevelopment">
+        </figure>
+        <!-- End SVG Icon -->
+      </div>
+    </div>
+  </div>
+  <!-- End Mockup Block -->
+</div>
+
+
+{% endblock %}

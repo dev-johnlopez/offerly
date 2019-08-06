@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Title -->
+  <title>Offerly | Sell your house online!</title>
+
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  <!-- Google Fonts -->
+  <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome/css/fontawesome-all.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/hs-megamenu/src/hs.megamenu.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/fancybox/jquery.fancybox.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/slick-carousel/slick/slick.css') }}">
+  {% block page_css %}{% endblock %}
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+<header id="header" class="u-header u-header--sticky-top">
+  <div class="u-header__section">
+    <div id="logoAndNav" class="container">
+      <!-- Nav -->
+      <nav class="js-mega-menu navbar navbar-expand-md u-header__navbar u-header__navbar--no-space">
+          <!-- Logo -->
+          <a class="navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="{{ url_for('landing.index' ) }}" aria-label="Offerly">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46px" height="46px" viewBox="0 0 46 46" xml:space="preserve" style="margin-bottom: 0;">
+              <path fill="#3F7DE0" opacity=".65" d="M23,41L23,41c-9.9,0-18-8-18-18v0c0-9.9,8-18,18-18h11.3C38,5,41,8,41,11.7V23C41,32.9,32.9,41,23,41z"/>
+              <path class="fill-info" opacity=".5" d="M28,35.9L28,35.9c-9.9,0-18-8-18-18v0c0-9.9,8-18,18-18l11.3,0C43,0,46,3,46,6.6V18C46,27.9,38,35.9,28,35.9z"/>
+              <path class="fill-primary" opacity=".7" d="M18,46L18,46C8,46,0,38,0,28v0c0-9.9,8-18,18-18h11.3c3.7,0,6.6,3,6.6,6.6V28C35.9,38,27.9,46,18,46z"/>
+              <path class="fill-white" d="M17.4,34V18.3h10.2v2.9h-6.4v3.4h4.8v2.9h-4.8V34H17.4z"/>
+            </svg> -->
+            <span class="u-header__navbar-brand-text">Offerly</span>
+          </a>
+          <!-- End Logo -->
+
+          <!-- Responsive Toggle Button -->
+          <button type="button" class="navbar-toggler btn u-hamburger"
+                  aria-label="Toggle navigation"
+                  aria-expanded="false"
+                  aria-controls="navBar"
+                  data-toggle="collapse"
+                  data-target="#navBar">
+            <span id="hamburgerTrigger" class="u-hamburger__box">
+              <span class="u-hamburger__inner"></span>
+            </span>
+          </button>
+          <!-- End Responsive Toggle Button -->
+
+          <!-- Navigation -->
+          <div id="navBar" class="collapse navbar-collapse u-header__navbar-collapse">
+            <ul class="navbar-nav u-header__navbar-nav">
+              <!-- Home -->
+              <li class="nav-item u-header__nav-item">
+                <a class="nav-link u-header__nav-link" href="{{ url_for('landing.index' )}}">Home</a>
+              </li>
+              <!-- End Home -->
+              <!-- How it works -->
+              <li class="nav-item u-header__nav-item">
+                <a class="nav-link u-header__nav-link" href="{{ url_for('landing.services') }}">How it works</a>
+              </li>
+              <!-- End How it works -->
+              <!-- Pricing -->
+              <li class="nav-item u-header__nav-item">
+                <a class="nav-link u-header__nav-link" href="{{ url_for('landing.pricing') }}">Pricing</a>
+              </li>
+              <!-- End Pricing -->
+
+              <!-- Button -->
+              <li class="nav-item u-header__nav-last-item">
+                <a class="btn btn-sm btn-primary transition-3d-hover" href="{{ url_for('evaluation.new') }}">
+                  Get your free offer
+                </a>
+              </li>
+              <!-- End Button -->
+            </ul>
+          </div>
+          <!-- End Navigation -->
+        </nav>
+        <!-- End Nav -->
+      </div>
+    </div>
+  </header>
+  <!-- ========== END HEADER ========== -->
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="content" role="main">
+    {% block content %}{% endblock %}
+  </main>
+  <!-- ========== END MAIN CONTENT ========== -->
+{% block footer %}
+<!-- ========== FOOTER ========== -->
+<footer class="container">
+
+  <div class="row space-2">
+    <div class="col-6 col-lg-3 mb-7 mb-lg-0">
+      <!-- Logo -->
+      <a class="d-inline-flex align-items-center mb-3" href="index.html" aria-label="Front">
+        <span class="brand brand-primary">Offerly</span>
+      </a>
+      <!-- End Logo -->
+
+      <!-- Copyright -->
+      <p class="small text-muted">© Offerly - 2019. All rights reserved.</p>
+      <!-- End Copyright -->
+    </div>
+
+    <div class="col-6 col-lg-3 mb-7 mb-lg-0">
+      <!-- List Group -->
+      <ul class="list-group list-group-flush list-group-borderless mb-0">
+        <li><a class="list-group-item list-group-item-action" href="../pages/about-agency.html">About</a></li>
+        <li><a class="list-group-item list-group-item-action" href="../pages/services-agency.html">Services</a></li>
+        <li><a class="list-group-item list-group-item-action" href="../pages/careers.html">Careers</a></li>
+        <li><a class="list-group-item list-group-item-action" href="../pages/grid-right-sidebar.html">Blog</a></li>
+      </ul>
+      <!-- End List Group -->
+    </div>
+
+    <div class="col-6 col-lg-3 mb-7 mb-lg-0">
+      <!-- List Group -->
+      <ul class="list-group list-group-flush list-group-borderless mb-0">
+        <li><a class="list-group-item list-group-item-action" href="../pages/help.html">Help</a></li>
+        <li><a class="list-group-item list-group-item-action" href="{{ url_for('landing.terms') }}">Terms</a></li>
+        <li><a class="list-group-item list-group-item-action" href="{{ url_for('landing.privacy') }}">Privacy</a></li>
+      </ul>
+      <!-- End List Group -->
+    </div>
+
+    <div class="col-6 col-lg-3 mb-7 mb-lg-0">
+      <div class="row mb-2">
+        <div class="col-12">
+          <div class="media">
+            <span class="btn btn-icon btn-soft-primary rounded-circle mr-3">
+              <span class="fas fa-phone btn-icon__inner"></span>
+            </span>
+            <div class="media-body">
+              <h4 class="h6 text-secondary font-weight-normal mb-0">Call us</h4>
+              <span class="d-block font-size-1">(866) 295-5401</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <div class="media">
+            <span class="btn btn-icon btn-soft-primary rounded-circle mr-3">
+              <span class="fas fa-envelope btn-icon__inner"></span>
+            </span>
+            <div class="media-body">
+              <h4 class="h6 text-secondary font-weight-normal mb-0">Email us</h4>
+              <span class="d-block font-size-1">contact@tryofferly.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ========== END FOOTER ========== -->
+{% endblock %}
+
+  <!-- Go to Top -->
+  <a class="js-go-to u-go-to" href="#"
+    data-position='{"bottom": 15, "right": 15 }'
+    data-type="fixed"
+    data-offset-top="400"
+    data-compensation="#header"
+    data-show-effect="slideInUp"
+    data-hide-effect="slideOutDown">
+    <span class="fas fa-arrow-up u-go-to__inner"></span>
+  </a>
+  <!-- End Go to Top -->
+
+  <!-- JS Global Compulsory -->
+  <script src="{{ url_for('static', filename='vendor/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.min.js') }}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{{ url_for('static', filename='vendor/hs-megamenu/src/hs.megamenu.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/svg-injector/dist/svg-injector.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/fancybox/jquery.fancybox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/slick-carousel/slick/slick.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/dzsparallaxer/dzsparallaxer.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/typed.js/lib/typed.min.js') }}"></script>
+  {% block plugins %}{% endblock %}
+
+  <!-- JS Front -->
+  <script src="{{ url_for('static', filename='js/hs.core.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.header.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.validation.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.fancybox.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.slick-carousel.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.svg-injector.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.go-to.js') }}"></script>
+  {% block font_js %}{% endblock %}
+
+  <!-- JS Plugins Init. -->
+  <script>
+  $(document).ready(function() {
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
+  });
+    $(window).on('load', function () {
+      // initialization of HSMegaMenu component
+      $('.js-mega-menu').HSMegaMenu({
+        event: 'hover',
+        pageContainer: $('.container'),
+        breakpoint: 767.98,
+        hideTimeOut: 0
+      });
+
+      // initialization of svg injector module
+      $.HSCore.components.HSSVGIngector.init('.js-svg-injector');
+    });
+
+    $(document).on('ready', function () {
+      // initialization of text animation (typing)
+      var typed = new Typed(".u-text-animation.u-text-animation--typing", {
+        strings: ["fair", "competitive", "quick"],
+        typeSpeed: 70,
+        loop: true,
+        backSpeed: 40,
+        backDelay: 500
+      });
+
+      // initialization of header
+      $.HSCore.components.HSHeader.init($('#header'));
+
+      // initialization of form validation
+      $.HSCore.components.HSValidation.init('.js-validate', {
+        rules: {
+          confirmPassword: {
+            equalTo: '#signupPassword'
+          }
+        }
+      });
+
+      // initialization of fancybox
+      $.HSCore.components.HSFancyBox.init('.js-fancybox');
+
+      // initialization of slick carousel
+      $.HSCore.components.HSSlickCarousel.init('.js-slick-carousel');
+
+      // initialization of go to
+      $.HSCore.components.HSGoTo.init('.js-go-to');
+    });
+  </script>
+
+  <script>
+// This sample uses the Autocomplete widget to help the user select a
+// place, then it retrieves the address components associated with that
+// place, and then it populates the form fields with those details.
+// This sample requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var placeSearch, autocomplete;
+
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+
+  for (var component in componentForm) {
+    document.getElementById(component).value = '';
+    document.getElementById(component).disabled = false;
+  }
+
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle(
+          {center: geolocation, radius: position.coords.accuracy});
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVVPEv5S9oPONvjA9uQK1mgOMm9l89X2g&libraries=places&callback=initAutocomplete"
+        async defer></script>
+</body>
+</html>

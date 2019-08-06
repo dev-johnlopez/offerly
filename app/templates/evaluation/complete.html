@@ -1,0 +1,105 @@
+{% extends 'evaluation/layout.html' %}
+{% block page_title %}{% endblock %}
+{% block content %}
+<div class="row d-flex justify-content-center mt-5">
+  <div class="col-8">
+    <h3 class="text-center">We've received your request!</h2>
+    <hr />
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <div class="col-6">
+    <p>We are reviewing your property and will reach out to you within 24 hours.</p>
+    <p>Here is what you can expect next:</p>
+    <ol class="text-secondary">
+      <li>Your assigned home advisor will prepare an offer.</li>
+      <li>Keep an eye on your email. We will email your offer to {{ email }}</li>
+      <li>We will schedule a conversation with you to review the offer</li>
+      <li>If you like your offer we will schedule a Home Assessment to review your home and confirm our offer</li>
+    </ol>
+    <!-- Title -->
+    <div class="mb-3">
+      <h5 class="text-secondary">Your Home Adivosr</h3>
+    </div>
+    <!-- End Title -->
+
+    <!-- Agents List -->
+    <div class="row">
+      <div class="col-12">
+        <!-- Agent -->
+        <div class="media">
+          <div class="u-lg-avatar mr-3">
+            <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/john_lopez.jpeg') }}" alt="Image Description">
+          </div>
+          <div class="media-body">
+            <h6 class="h6 mb-1 text-secondary">John Lopez</h4>
+            <p class="font-size-1 mb-2">
+              <span class="fas fa-phone mr-1"></span>
+              (312) 626-3027
+              <br />
+              <span class="fas fa-envelope mr-1"></span>
+              john.lopez@tryofferly.com
+            </p>
+          </div>
+        </div>
+        <!-- End Agent -->
+      </div>
+
+    </div>
+    <!-- End Agents List -->
+  </div>
+  {#<div class="col-lg-4">
+    <div id="stickyBlockStartPoint" class="pl-lg-4">
+      <!-- Contact Form -->
+      <div class="js-sticky-block card shadow-sm p-4"
+           data-parent="#stickyBlockStartPoint"
+           data-sticky-view="lg"
+           data-start-point="#stickyBlockStartPoint"
+           data-end-point="#stickyBlockEndPoint"
+           data-offset-top="24"
+           data-offset-bottom="0">
+        <!-- Header -->
+        <div class="media align-items-center mb-4">
+          <div class="media-body">
+            <h4 class="h6 mb-0">Ask for more information</h4>
+          </div>
+        </div>
+        <!-- End Header -->
+
+        <!-- Form -->
+        <form>
+          <div class="mb-2">
+            <label class="sr-only" for="emailSr">Email</label>
+            <input type="email" class="form-control form-control-sm" name="text" id="emailSr" placeholder="Email" aria-label="Email">
+          </div>
+
+          <div class="mb-2">
+            <label class="sr-only" for="phoneNumberSr">Phone number</label>
+            <input type="tel" class="form-control form-control-sm" name="tel" id="phoneNumberSr" placeholder="Phone number" aria-label="Phone number">
+          </div>
+
+          <div class="mb-2">
+            <label class="sr-only" for="propertyQuestionSr">Property question</label>
+            <textarea class="form-control form-control-sm" rows="4" name="answer" id="propertyQuestionSr" placeholder="I would like more information about ..." aria-label="I would like more information about ..."></textarea>
+          </div>
+
+          <button type="button" class="btn btn-block btn-sm btn-primary btn-wide transition-3d-hover">Submit</button>
+        </form>
+        <!-- End Form -->
+      </div>
+      <!-- End Contact Form -->
+    </div>
+  </div>#}
+</div>
+
+<div class="row d-flex justify-content-center mt-5">
+  <div class="d-flex justify-content-end">
+    <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="{{ url_for('landing.index' )}}" data-previous-step="#selectStepTwentyeight">Go Home</a>
+    <a href="{{ url_for('evaluation.new') }}" class="btn btn-sm btn-primary transition-3d-hover">Request Another Offer</a>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

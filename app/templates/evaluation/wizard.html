@@ -1,0 +1,340 @@
+{% from "macros/_wizard_step_fields.html" import render_input_step_field_with_errors, render_checkbox_group_step_field_with_errors %}
+{% extends 'evaluation/layout.html' %}
+{% block content %}
+
+    <!-- Step Form -->
+    <form class="js-validate js-step-form"
+          data-progress-id="#progressStepForm"
+          data-steps-id="#contentStepForm"
+          novalidate="novalidate"
+          data-progress-bar-id="#progress-bar",
+          method="POST">
+          {{ form.hidden_tag() }}
+          {{ form.address.hidden_tag() }}
+      <div class="card">
+        <!-- Content Step Form -->
+        <div id="contentStepForm" class="card-body p-5">
+          <div id="selectStepOne" class="{% if default_step_id == 'selectStepOne' %}active{% else %}display: none;{% endif %}">
+            <!-- Title -->
+            <div class="border-bottom pb-3 mb-5">
+              <h2 class="h6 text-secondary mb-0">Input Address</h2>
+            </div>
+            <!-- End Title -->
+            <!-- Input -->
+            <div class="form-group mb-5">
+              <div class="js-focus-state">
+                <label class="form-label" for="listingPrice">Price</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fas fa-home"></i>
+                    </span>
+                  </div>
+                  <input id="autocomplete"
+                      placeholder="Enter your address"
+                      onFocus="geolocate()"
+                      type="text"
+                      class="form-control"/>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-sm btn-primary transition-3d-hover mr-1" data-next-step="#selectStepTwo">Next</button>
+            </div>
+          </div>
+
+          <div id="selectStepTwo" {% if default_step_id == 'selectStepTwo' %}class='active'{% else %}style='display: none;'{% endif %}">
+            <!-- Title -->
+            <div class="border-bottom pb-3 mb-5">
+              <h2 class="h6 text-secondary mb-0">Confirm Address</h2>
+              <p id="address-match-info">Sorry, we couldn't find your address. Please input your address below</p>
+            </div>
+            <!-- End Title -->
+            <div class="row">
+              <div class="col-lg-8 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingAddress">Street Address</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingAddressLabel">
+                          <span class="fas fa-map-marker-alt"></span>
+                        </span>
+                      </div>
+                      {{ form.address.street_address(class="form-control", **{'data-msg':'Please enter your street address.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                      {{ form.address.street_number(class="form-control", hidden="true") }}
+                      {{ form.address.route(disabled=True, hidden="true") }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+
+              <div class="col-lg-4 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-focus-state">
+                    <label class="form-label" for="listingAddress">Apt / Unit #</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingAddressLabel">
+                          <span class="fas fa-map-marker-alt"></span>
+                        </span>
+                      </div>
+                      {{ form.address.apt_number(class="form-control") }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-lg-4 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingCityProvince">City</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingCityProvinceLabel">
+                          <span class="fas fa-city"></span>
+                        </span>
+                      </div>
+                      {{ form.address.locality(class="form-control", **{'data-msg':'Please enter your city.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingCityProvince">State</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingCityProvinceLabel">
+                          <span class="fas fa-city"></span>
+                        </span>
+                      </div>
+                      {{ form.address.administrative_area_level_1(class="form-control", **{'data-msg':'Please enter your state.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingCityProvince">Zip Code</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingCityProvinceLabel">
+                          <span class="fas fa-city"></span>
+                        </span>
+                      </div>
+                      {{ form.address.postal_code(class="form-control", **{'data-msg':'Please enter your zip code.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+              <div hidden>
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-focus-state">
+                    <label class="form-label" for="listingCityProvince">Country</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingCityProvinceLabel">
+                          <span class="fas fa-city"></span>
+                        </span>
+                      </div>
+                      {{ form.address.country(disabled=True) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-sm btn-primary transition-3d-hover mr-1" data-next-step="#selectStepThree">Next</button>
+            </div>
+          </div>
+
+          {{ render_input_step_field_with_errors(form.sq_foot, "selectStepThree", "selectStepFour", "selectStepTwo", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.year_built, "selectStepFour", "selectStepFive", "selectStepThree", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.stories_count, "selectStepFive", "selectStepSix", "selectStepFour", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.basement_type, "selectStepSix", "selectStepSeven", "selectStepFive", class="form-control") }}
+
+          {#
+            FIGURE OUT HOW TO DYNAMICALLY CHANGE STEPS!!! Turn this on if no basement selected
+          <div id="selectStepSix" style="display: none;">
+            <h4>Is the basement a walk out basement?</h4>
+            <p>A basement is a level that is either completely or partially below the ground floor.
+              Finished means that the space is sutable for living, with fully finished walls, flooring,
+              as well as air conditioning and heating.</p>
+
+              <!-- Radio Checkbox Group -->
+              <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                  <input type="radio" name="walk-out-basement-ind" id="walk-out-basement-ind-yes" autocomplete="off"> Yes
+                </label>
+                <label class="btn btn-secondary">
+                  <input type="radio" name="walk-out-basement-ind" id="walk-out-basement-ind-no" autocomplete="off"> No
+                </label>
+              </div>
+              <!-- END Radio Checkbox Group -->
+
+            <div class="d-flex justify-content-end">
+              <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;" data-previous-step="#selectStepFive">Back</a>
+              <button type="button" class="btn btn-sm btn-primary transition-3d-hover" data-next-step="#selectStepSeven">Next</button>
+            </div>
+          </div>
+
+          #}
+
+          {{ render_input_step_field_with_errors(form.addition_type, "selectStepSeven", "selectStepEight", "selectStepSix", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.bedroom_count, "selectStepEight", "selectStepNine", "selectStepSeven", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.full_bath_count, "selectStepNine", "selectStepTen", "selectStepEight", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.half_bath_count, "selectStepTen", "selectStepEleven", "selectStepNine", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.parking_type, "selectStepEleven", "selectStepTwelve", "selectStepTen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.countertops, "selectStepTwelve", "selectStepThirteen", "selectStepEleven", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.appliances, "selectStepThirteen", "selectStepFourteen", "selectStepTwelve", class="form-control") }}
+          {{ render_checkbox_group_step_field_with_errors([form.double_oven_ind, form.walk_in_pantry_ind, form.separate_cooktop_ind, form.built_in_oven_ind, form.built_in_microwave_ind], "Do any of the additional fetures apply to the kitchen?", "Select all that apply.", "selectStepFourteen", "selectStepFifteen", "selectStepThirteen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.kitchen_flooring, "selectStepFifteen", "selectStepSixteen", "selectStepFourteen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.main_flooring, "selectStepSixteen", "selectStepSeventeen", "selectStepFifteen", class="form-control") }}
+          {{ render_checkbox_group_step_field_with_errors([form.bathroom_flooring_tile_ind,
+          form.bathroom_flooring_vinyl_ind,
+          form.bathroom_flooring_laminate_ind,
+          form.bathroom_flooring_hardwood_ind,
+          form.bathroom_flooring_travertine_ind,
+          form.bathroom_flooring_saltillo_tile_ind,
+          form.bathroom_flooring_carpet_ind,
+          form.bathroom_flooring_woodplank_tile_ind,
+          form.bathroom_flooring_concrete_ind,
+          form.bathroom_flooring_other_ind], "What type of flooring is used in the bathrooms?", "Select the option that most closely matches the flooring.", "selectStepSeventeen", "selectStepEighteen", "selectStepSixteen", class="form-control") }}
+          {{ render_checkbox_group_step_field_with_errors([form.bathroom_flooring_tile_ind,
+          form.bedroom_flooring_vinyl_ind,
+          form.bedroom_flooring_laminate_ind,
+          form.bedroom_flooring_hardwood_ind,
+          form.bedroom_flooring_travertine_ind,
+          form.bedroom_flooring_saltillo_tile_ind,
+          form.bedroom_flooring_carpet_ind,
+          form.bedroom_flooring_woodplank_tile_ind,
+          form.bedroom_flooring_concrete_ind,
+          form.bedroom_flooring_other_ind], "What type of flooring is used in the bedrooms?", "Select the option that most closely matches the flooring.", "selectStepEighteen", "selectStepNineteen", "selectStepSeventeen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.landscaping, "selectStepNineteen", "selectStepTwenty", "selectStepEighteen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.pool, "selectStepTwenty", "selectStepTwentyone", "selectStepNineteen", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.hottub, "selectStepTwentyone", "selectStepTwentytwo", "selectStepTwenty", class="form-control") }}
+          {{ render_checkbox_group_step_field_with_errors([form.gated_community_ind,
+          form.hoa_ind,
+          form.age_restricted_ind], "Tell us about the community...", "Select all that apply", "selectStepTwentytwo", "selectStepTwentythree", "selectStepTwentyone", class="form-control") }}
+          {{ render_checkbox_group_step_field_with_errors([form.solar_panels_ind,
+          form.septic_system_ind,
+          form.well_water_ind,
+          form.poor_location_ind], "Does any of the following apply?", "Answering yes is not a problem! We just want to know.", "selectStepTwentythree", "selectStepTwentyfour", "selectStepTwentytwo", class="form-control") }}
+          {# add an "is the well shared" if well water is selected above #}
+          {{ render_input_step_field_with_errors(form.sinkholes_ind, "selectStepTwentyfour", "selectStepTwentyfive", "selectStepTwentythree", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.foundation_issues, "selectStepTwentyfive", "selectStepTwentysix", "selectStepTwentyfour", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.additional_info, "selectStepTwentysix", "selectStepTwentyseven", "selectStepTwentyfive", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.submitter_type, "selectStepTwentyseven", "selectStepTwentyeight", "selectStepTwentysix", class="form-control") }}
+          {{ render_input_step_field_with_errors(form.listed_ind, "selectStepTwentyeight", "selectStepTwentynine", "selectStepTwentyseven", class="form-control") }}
+
+          <div id="selectStepTwentynine" style="display: none;">
+            <h4>Where should we send our offer?</h4>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingFirstName">{{ form.submitter_first_name.label.text }}</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingFirstNameLabel">
+                          <span class="fas fa-user"></span>
+                        </span>
+                      </div>
+                      {{ form.submitter_first_name(class="form-control", **{'data-msg':'Please enter your first name.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingLastName">{{ form.submitter_last_name.label.text }}</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingLastNameLabel">
+                          <span class="fas fa-user"></span>
+                        </span>
+                      </div>
+                      {{ form.submitter_last_name(class="form-control", **{'data-msg':'Please enter your last name.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-form-message js-focus-state">
+                    <label class="form-label" for="listingAgentPhoneNumber">{{ form.submitter_phone.label.text }}</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingAgentPhoneNumberLabel">
+                          <span class="fas fa-phone"></span>
+                        </span>
+                      </div>
+                      {{ form.submitter_phone(class="form-control", **{'data-msg':'Please enter your phone number.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+              <!-- End Input -->
+
+              <div class="col-lg-6 mb-3">
+                <!-- Input -->
+                <div class="form-group">
+                  <div class="js-form-message js-focus-state">
+                    <label class="form-label" for="listingAgentWebsiteAddress">{{ form.submitter_email.label.text }}</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="listingAgentWebsiteAddressLabel">
+                          <span class="fas fa-globe"></span>
+                        </span>
+                      </div>
+                      {{ form.submitter_email(class="form-control", **{'data-msg':'Please enter your email.', 'data-error-class':'u-has-error', 'data-success-class':'u-has-success'}) }}
+                    </div>
+                  </div>
+                </div>
+                <!-- End Input -->
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <a class="btn btn-sm btn-soft-secondary transition-3d-hover mr-1" href="javascript:;" data-previous-step="#selectStepTwentyeight">Back</a>
+              <button type="submit" class="btn btn-sm btn-primary transition-3d-hover">Done</button>
+            </div>
+          </div>
+        </div>
+        <!-- End Content Step Form -->
+      </div>
+    </form>
+    <!-- End Step Form -->
+
+{% endblock %}

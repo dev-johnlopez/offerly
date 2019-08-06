@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Title -->
+  <title>Offerly | Sell your house online!</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome/css/fontawesome-all.min.css') }}">
+</head>
+
+<body>
+  <div class="progress" style="height: 4px;">
+    <div class="progress-bar" id="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+  {#<div id="GMapCustomized-light" style="height: 300px; border-bottom: 1px;" class="js-g-map embed-responsive embed-responsive-21by9"
+   data-type="custom"
+   data-lat="40.674"
+   data-lng="-73.946"
+   data-zoom="15"
+   data-title="Front"
+   data-pin="true"
+   data-pin-icon="{{ url_for('static', filename='img/map-markers/map-marker6.png') }}"
+   data-styles='[
+     ["", "", [{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]],
+     ["", "labels", [{"visibility":"on"}]],
+     ["water", "", [{"color":"#bac6cb"}]]
+   ]'></div>#}
+  <div class="container">
+    {% block page_title %}<h1>Offerly</h1>{% endblock %}
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="row-fluid">
+          <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=["info"]) %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="row-fluid">
+          <div class="alert alert-info alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=["warning"]) %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="row-fluid">
+          <div class="alert alert-warning alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="row-fluid">
+          <div class="alert alert-success alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              {{ message }}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- JS Global Compulsory -->
+  <script src="{{ url_for('static', filename='vendor/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery-migrate/dist/jquery-migrate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.min.js') }}"></script>
+
+  <!-- JS Implementing Plugins -->
+  <script src="{{ url_for('static', filename='vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/gmaps/gmaps.min.js') }}"></script>
+
+  <!-- JS Front -->
+  <script src="{{ url_for('static', filename='js/hs.core.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.step-form.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.g-map.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/components/hs.validation.js') }}"></script>
+  <script>
+    $(document).on('ready', function () {
+      // initialization of step form
+      $.HSCore.components.HSStepForm.init('.js-step-form');
+      $.HSCore.components.HSValidation.init('.js-validate');
+    });
+
+    // initialization of google map
+    function initMap() {
+      $.HSCore.components.HSGMap.init('.js-g-map');
+    }
+  </script>
+  <script>
+// This sample uses the Autocomplete widget to help the user select a
+// place, then it retrieves the address components associated with that
+// place, and then it populates the form fields with those details.
+// This sample requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script
+// src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+var placeSearch, autocomplete;
+
+var componentForm = {
+  street_number: 'short_name',
+  route: 'long_name',
+  locality: 'long_name',
+  administrative_area_level_1: 'short_name',
+  country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search predictions to
+  // geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('autocomplete'), {types: ['geocode']});
+
+  // Avoid paying for data that you don't need by restricting the set of
+  // place fields that are returned to just the address components.
+  autocomplete.setFields(['address_component']);
+
+  // When the user selects an address from the drop-down, populate the
+  // address fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+  var addressFieldPrefix = 'address-'
+
+  for (var component in componentForm) {
+    document.getElementById(addressFieldPrefix+component).value = '';
+    document.getElementById(addressFieldPrefix+component).disabled = false;
+  }
+
+  // Get each component of the address from the place details,
+  // and then fill-in the corresponding field on the form.
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressFieldPrefix+addressType).value = val;
+    }
+  }
+  $('#address-street_address').val($('#address-street_number').val() + " " + $('#address-route').val());
+  $('#address-match-info').text('Please confirm a Apt / Unit # if appropriate');
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle(
+          {center: geolocation, radius: position.coords.accuracy});
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVVPEv5S9oPONvjA9uQK1mgOMm9l89X2g&libraries=places&callback=initAutocomplete"
+        async defer></script>
+</body>
+</html>
