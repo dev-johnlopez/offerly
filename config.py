@@ -20,3 +20,4 @@ class Config(object):
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
     MAIL_DEBUG = os.environ.get('MAIL_DEBUG') or 0
     ADMINS = ['contact@tryofferly.org', 'john@johnlopez.org']
+    SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT')
