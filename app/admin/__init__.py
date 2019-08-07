@@ -19,7 +19,7 @@ def create_admin(app, db):
 class MyModelView(sqla.ModelView):
 
     def is_accessible(self):
-        return True#current_user.is_authenticated and current_user.is_admin()
+        return current_user.is_authenticated and current_user.is_admin()
 
     def inaccessible_callback(self, name, **kwargs):
         # redirect to login page if user doesn't have access
