@@ -36,6 +36,10 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '{}'.format(self.email)
 
+    def is_admin(self):
+        return self.email.upper() in \
+            (email.upper() for email in current_app.config['ADMINS'])
+
 
 class Role(db.Model, RoleMixin):
     __tablename__ = 'role'
