@@ -12,6 +12,7 @@ def create_admin(app, db):
     admin = Admin(app, name='Offerly', index_view=MyAdminIndexView(),
                   template_mode='bootstrap3')
     admin.add_view(MyModelView(Property, db.session))
+    admin.add_view(MyModelView(User, db.session))
     return admin
 
 

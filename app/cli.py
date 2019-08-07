@@ -25,3 +25,15 @@ def register(app):
     def compile():
         """Compile all languages."""
         pass
+
+@click.command("add_user")
+@with_appcontext
+def add_roles():
+    from app import db, security
+    from app.auth.models import Role
+    db.init_app(app)
+    # Setup Flask-Security
+    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    security = Security(app, user_datastore)
+    user_datastore.create_user(email='john@johnlopez.org', password=app.config['ADMIN_PASSWORD'])
+    db.session.commit()
