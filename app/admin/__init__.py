@@ -35,8 +35,8 @@ class MyAdminIndexView(AdminIndexView):
     @expose('/')
     def index(self):
         next = url_for(request.endpoint, **request.view_args)
-        #if not current_user.is_authenticated:
-        #    return redirect(url_for('security.login', next=next))
-        #if not current_user.is_admin():
-        #    return redirect(url_for('security.login', next=next))
+        if not current_user.is_authenticated:
+            return redirect(url_for('security.login', next=next))
+        if not current_user.is_admin():
+            return redirect(url_for('security.login', next=next))
         return super(MyAdminIndexView, self).index()
