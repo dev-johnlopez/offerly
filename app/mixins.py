@@ -49,10 +49,10 @@ def _current_user_id_or_none():
     create_user_id = None
     try:
         return g.user.id
-    except e:
+    except Exception as e:
         pass
     try:
         return current_user.id
-    except e:
+    except Exception as e:
         pass
     return None

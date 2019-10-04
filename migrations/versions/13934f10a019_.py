@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: daef9e6b036d
+Revision ID: 13934f10a019
 Revises: 
-Create Date: 2019-07-12 17:21:08.762585
+Create Date: 2019-10-04 16:58:16.891916
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'daef9e6b036d'
+revision = '13934f10a019'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -96,8 +96,8 @@ def upgrade():
     sa.Column('bedroom_flooring_concrete_ind', sa.Boolean(), nullable=True),
     sa.Column('bedroom_flooring_other_ind', sa.Boolean(), nullable=True),
     sa.Column('landscaping', sa.String(length=255), nullable=True),
-    sa.Column('pool', sa.Integer(), nullable=True),
-    sa.Column('hottub', sa.Integer(), nullable=True),
+    sa.Column('pool', sa.Boolean(), nullable=True),
+    sa.Column('hottub', sa.Boolean(), nullable=True),
     sa.Column('gated_community_ind', sa.Boolean(), nullable=True),
     sa.Column('hoa_ind', sa.Boolean(), nullable=True),
     sa.Column('age_restricted_ind', sa.Boolean(), nullable=True),
@@ -105,7 +105,7 @@ def upgrade():
     sa.Column('septic_system_ind', sa.Boolean(), nullable=True),
     sa.Column('well_water_ind', sa.Boolean(), nullable=True),
     sa.Column('poor_location_ind', sa.Boolean(), nullable=True),
-    sa.Column('sinkholes_ind', sa.Integer(), nullable=True),
+    sa.Column('sinkholes_ind', sa.Boolean(), nullable=True),
     sa.Column('foundation_issues', sa.Boolean(), nullable=True),
     sa.Column('additional_info', sa.String(length=1500), nullable=True),
     sa.Column('submitter_type', sa.String(length=255), nullable=True),
