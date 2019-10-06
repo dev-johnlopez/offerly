@@ -1,3 +1,4 @@
+import os
 from app import create_app, db, cli
 from flask import current_app
 from flask_security import Security, SQLAlchemyUserDatastore, current_user
