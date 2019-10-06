@@ -6,6 +6,5 @@ from app.auth.models import Role, User
 # Setup Flask-Security
 app = create_app()
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(app, user_datastore)
 user_datastore.create_user(email=os.environ.get('ADMIN_USERNAME'), password=encrypt_password(os.environ.get('ADMIN_PASSWORD')))
 db.session.commit()
