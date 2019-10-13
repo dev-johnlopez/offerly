@@ -4,6 +4,8 @@ from sqlalchemy import Column, Integer, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declared_attr
 from flask_security import current_user
+from transitions import Machine
+from sqlalchemy.ext.declarative import declared_attr
 
 
 class AuditMixin(object):
@@ -56,3 +58,41 @@ def _current_user_id_or_none():
     except Exception as e:
         pass
     return None
+
+class DealStateMixin(object):
+    @declared_attr
+    def __tablename__(cls):
+        return cls.__name__.lower()
+
+    @declared_attr
+    def status(cls):
+        return db.Column(db.String())
+
+    @property
+    def state(self):
+        return self.status
+
+    @state.setter
+    def state(self, value):
+        if self.status != value:
+            self.status = value
+
+    def after_state_change(self):
+        self._session.add(self)
+        self._session.commit()
+
+    @classmethod
+    def init_state_machine(cls, obj, *args, **kwargs):
+        # when we load data from the DB(via query) we need to set the proper initial state
+        initial = obj.status or 'new'
+        states = ['new', 'active', 'closed']
+        transitions = [
+            ['activate', 'new', 'active'],
+            ['close', 'active', 'closed']
+        ]
+
+        machine = Machine(model=obj, states=states, transitions=transitions, initial=initial,
+                          after_state_change='after_state_change')
+
+        # in case that we need to have machine obj in model obj
+        setattr(obj, 'machine', machine)
