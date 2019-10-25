@@ -1,0 +1,149 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll" data-options='{direction: "normal"}'>
+  <!-- Apply your Parallax background image here -->
+  <div class="divimage dzsparallaxer--target" style="height: 130%; background-image: url({{ url_for('static', filename='img/1920x800/img5.jpg') }});"></div>
+
+  <!-- Content -->
+  <div class="container space-2 space-md-3">
+    <div class="text-center w-lg-80 mx-auto">
+      <h1 class="text-white display-1 font-size-md-down-5 font-weight-semi-bold">Knowledge Base</h1>
+    </div>
+
+    <div class="text-center w-lg-40 mx-auto">
+      <p class="lead text-white-70">Everything you need to know about selling your home.</p>
+    </div>
+  </div>
+  <!-- End Content -->
+</div>
+<!-- End Hero Section -->
+
+<!-- Articles Section -->
+<div class="container space-2 space-md-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <!-- Article -->
+      {% for post in posts %}
+        <article>
+          <img class="img-fluid rounded" src="{{ url_for('static', filename='img/900x450/img3.jpg') }}" alt="Image Description">
+
+          <div class="px-4">
+            <ul class="list-inline d-flex align-items-center py-3">
+              <li class="list-inline-item d-flex align-items-center pr-2">
+                <div class="u-sm-avatar mr-2">
+                  <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/john_lopez.jpeg') }}" alt="John Lopez">
+                </div>
+                <a class="text-secondary font-size-1" href="#">John Lopez</a>
+              </li>
+              <li class="list-inline-item ml-auto">
+                <a class="d-flex align-items-center small text-secondary" href="javascript:;">
+                  <span class="far fa-heart mr-2"></span>
+                  3 Likes
+                </a>
+              </li>
+            </ul>
+
+            <!-- Info -->
+            <small class="d-block text-muted mb-1">5 minutes ago</small>
+            <h2 class="h4">
+              <a href="{{ url_for('blog.show_post', slug=post.slug) }}">{{ post.title }}</a>
+            </h2>
+            <p class="mb-0">Clark Valberg is the founder and CEO of InVision. If you are a designer, you have probably gotten an email from Clark or from InVision at one time or another, but if you're not familiar with the company.</p>
+            <!-- End Info -->
+          </div>
+        </article>
+        <!-- End Article -->
+        {% if not loop.last %}
+          <!-- Divider -->
+          <div class="space-2 px-4">
+            <hr class="my-0">
+          </div>
+          <!-- End Divider -->
+        {% endif %}
+      {% endfor %}
+
+      <div class="space-bottom-2"></div>
+
+      <!-- Pagination -->
+      <nav aria-label="Page navigation">
+
+
+        <ul class="pagination justify-content-center">
+          {% if previous_page %}
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if next_page %}
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <!-- End Pagination -->
+    </div>
+  </div>
+</div>
+
+<!-- Subscribe Modal Window -->
+<div id="subscribeModal" class="js-modal-window svg-preloader u-modal-window position-relative" style="width: 600px;"
+     data-modal-type="ontarget"
+     data-target="#subscribeModalAnchor"
+     data-speed="500">
+  <!-- Modal Close Button -->
+  <button type="button" class="close close-light position-absolute top-0 right-0 z-index-2 p-2" aria-label="Close" onclick="Custombox.modal.close();">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <!-- End Modal Close Button -->
+
+  <div class="card border-0 bg-primary text-white text-center py-5 px-md-5">
+    <div class="card-body">
+      <!-- Title -->
+      <div class="mb-4">
+        <h4 class="h1 font-weight-semi-bold mb-1">Subscribe</h4>
+        <p class="text-white-70 mb-0">Get the latest updates from Front.</p>
+      </div>
+      <!-- End Title -->
+
+      <!-- SVG Icon -->
+      <figure class="w-80 mx-auto mb-1 ie-subscribe-2-flat-icons">
+        <img class="js-svg-injector" src="{{ url_for('static', filename='svg/flat-icons/subscribe-2.svg') }}" alt="Image Description"
+             data-parent="#subscribeModal">
+      </figure>
+      <!-- End SVG Icon -->
+
+      <!-- Subscribe Form -->
+      <form class="js-validate js-form-message w-80 mx-auto">
+        <label class="sr-only" for="subscribeSrEmail">Enter your email address</label>
+        <div class="input-group input-group-borderless">
+          <input type="email" class="form-control" name="email" id="subscribeSrEmail" placeholder="Enter your email address" aria-label="Enter your email address" aria-describedby="subscribeButton" required
+                 data-msg="Please enter a valid email address.">
+          <div class="input-group-append">
+            <button type="button" class="btn btn-success" id="subscribeButton">Subscribe</button>
+          </div>
+        </div>
+      </form>
+      <!-- End Subscribe Form -->
+    </div>
+
+    <!-- SVG Background Shape -->
+    <div class="w-100 content-centered-y z-index-n1">
+      <figure class="ie-bg-elements-1">
+        <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/bg-elements-1.svg') }}" alt="Image Description"
+             data-parent="#subscribeModal">
+      </figure>
+    </div>
+    <!-- End SVG Background Shape -->
+  </div>
+</div>
+<!-- End Subscribe Modal Window -->
+{% endblock %}

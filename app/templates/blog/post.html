@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="d-lg-flex space-top-2 space-top-md-3 space-lg-0 position-relative">
+  <div class="container d-lg-flex align-items-lg-center height-lg-100vh position-relative space-md-2 space-bottom-lg-0">
+    <!-- Blog -->
+    <div class="w-lg-40">
+      <!-- Link -->
+      <div class="space-bottom-2 space-bottom-md-3">
+        <a class="text-secondary" href="#">
+          <span class="fas fa-arrow-left small mr-2"></span>
+          Go Back
+        </a>
+      </div>
+      <!-- End Link -->
+
+      <!-- Author -->
+      <div class="media align-items-center mb-4">
+        <div class="u-sm-avatar mr-3">
+          <img class="img-fluid rounded-circle" src="{{ url_for('static', filename='img/john_lopez.jpeg') }}" alt="John Lopez">
+        </div>
+        <div class="media-body">
+          <h4 class="d-inline-block mb-0">
+            <a class="d-block h6 mb-0" href="{{ url_for('blog.show_author', author_slug=post.author.slug) }}">John Lopez</a>
+          </h4>
+        </div>
+      </div>
+      <!-- End Author -->
+
+      <!-- Info -->
+      <div class="mb-4">
+        <h1 class="text-primary font-weight-semi-bold">{{ post.title }}</h1>
+        <p class="lead">Free design collaboration for freelancers and startups.</p>
+      </div>
+      <!-- End Info -->
+    </div>
+    <!-- End Blog -->
+  </div>
+
+  <!-- Sidebar Image -->
+  <div class="col-lg-6 position-lg-absolute top-lg-0 right-lg-0 px-lg-0">
+    <div class="dzsparallaxer auto-init height-is-based-on-content use-loading mode-scroll min-height-lg-100vh"
+         data-options='{direction: "normal"}'>
+      <!-- Apply your Parallax background image here -->
+      <div class="divimage dzsparallaxer--target" style="height: 130%; background-image: url({{ url_for('static', filename='img/900x900/img1.jpg') }});"></div>
+    </div>
+  </div>
+  <!-- End Sidebar Image -->
+</div>
+<!-- End Hero Section -->
+
+<!-- Description Section -->
+<div class="container space-2 space-md-3">
+  <div class="w-lg-60 mx-auto">
+    <div class="mb-4">
+      <span class="text-muted">April 15, 2018</span>
+    </div>
+
+    {{ post.body|safe }}
+
+    <!-- Social Networks -->
+    <ul class="list-inline mb-0">
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-facebook-f btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-google btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-twitter btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-pinterest btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-get-pocket btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-telegram-plane btn-icon__inner"></span>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn btn-icon btn-soft-secondary btn-bg-transparent" href="#">
+          <span class="fab fa-slack btn-icon__inner"></span>
+        </a>
+      </li>
+    </ul>
+    <!-- End Social Networks -->
+  </div>
+</div>
+<!-- End Description Section -->
+
+<hr class="my-0">
+
+<!-- Subscribe Section -->
+<div id="SVGsubscribe" class="svg-preloader overflow-hidden">
+  <div class="position-relative gradient-half-primary-v1 overflow-hidden space-top-2 space-bottom-3 space-top-md-3 space-bottom-md-4">
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-9 col-lg-7 col-xl-6 offset-xl-2">
+          <!-- Title -->
+          <div class="text-center mb-4">
+            <span class="btn btn-xs btn-soft-white btn-pill mb-2">Subscribe</span>
+            <h2 class="h1 text-white"><span class="font-weight-semi-bold">Stay</span> in the know</h2>
+            <p class="lead text-white-70">Get special offers on the latest developments from Front.</p>
+          </div>
+          <!-- End Title -->
+
+          <!-- Subscribe Form -->
+          <form class="js-validate js-form-message">
+            <label class="sr-only" for="subscribeSrEmail">Enter your email address</label>
+            <div class="input-group input-group-lg input-group-borderless">
+              <input type="email" class="form-control" name="email" id="subscribeSrEmail" placeholder="Enter your email address" aria-label="Enter your email address" aria-describedby="subscribeButton" required
+                     data-msg="Please enter a valid email address.">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-warning btn-wide" id="subscribeButton">Join Front</button>
+              </div>
+            </div>
+          </form>
+          <!-- End Subscribe Form -->
+
+          <!-- Info -->
+          <div class="d-block d-xl-none">
+            <small class="form-text text-white-70 mb-0">Be the lucky user to earn <span class="text-white font-weight-semi-bold">$1000</span> bonus now!</small>
+          </div>
+          <!-- End Info -->
+        </div>
+
+        <div class="col-xl-2 d-none d-xl-inline-block mt-auto mb-7">
+          <div class="position-relative p-3">
+            <p class="small text-white-70 mb-0">Be the lucky user to earn <span class="text-white font-weight-semi-bold">$1000</span> bonus now!</p>
+
+            <!-- SVG Shape -->
+            <figure class="position-absolute top-0 right-0 left-0">
+              <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/comment.svg') }}" alt="Image Description"
+                   data-parent="#SVGsubscribe">
+            </figure>
+            <!-- End SVG Shape -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG Phone Mockup -->
+    <div class="d-none d-lg-block u-devices-v2__phone u-devices-v2__phone--left-position">
+      <figure class="w-75 u-devices-v2__phone-svg ie-devices-v2-iphone">
+        <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/iphone.svg') }}" alt="Image Description"
+             data-img-paths='[
+               {"targetId": "#SVGiphoneImg1", "newPath": "{{ url_for('static', filename='img/282x500/img3.jpg') }}"}
+             ]'
+             data-parent="#SVGsubscribe">
+      </figure>
+    </div>
+    <!-- End SVG Phone Mockup -->
+  </div>
+
+  <!-- SVG Background -->
+  <figure class="position-absolute right-0 bottom-0 left-0 z-index-2">
+    <img class="js-svg-injector" src="{{ url_for('static', filename='svg/components/wave-1-bottom-sm.svg') }}" alt="Image Description"
+         data-parent="#SVGsubscribe">
+  </figure>
+  <!-- End SVG Background Section -->
+</div>
+<!-- End Subscribe Section -->
+
+
+
+<!--
+// For sharing, we recommend https://www.addthis.com/get/sharing or https://sumome.com/app/share
+-->
+
+<!--
+// For commenting, we recommend https://disqus.com/
+// Create a Disqus account and paste your snippet below
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'XXXXXXXX';
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+-->
+{% endblock %}
