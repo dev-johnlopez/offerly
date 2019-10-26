@@ -221,6 +221,7 @@ class PropertyForm(FlaskForm):
                                               toilet and sink but no \
                                               bathtub/shower.',
                                  choices=[
+                                    ('0', '0'),
                                     ('1', '1'),
                                     ('2', '2'),
                                     ('3', '3'),
